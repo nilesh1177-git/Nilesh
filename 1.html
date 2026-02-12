@@ -201,7 +201,7 @@ function back2(){third.style.display='none';second.style.display='flex';}
 
 /* Floating hearts & particles */
 const items=['❤️','💖','💘','🌸','🌹','🌷','🌻','💋','🐰','🧸','✨','⭐','💫','🥰','😍','👩‍❤️‍👨','🌟','💎','🔮','🌙','🦋'];
-function spawn(){const e=document.createElement('div');e.className='floating';e.innerText=items[Math.floor(Math.random()*items.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(25+Math.random()*45)+'px';e.style.animationDuration=(7+Math.random()*10)+'s';e.style.color=['var(--neon-pink)','var(--neon-lavender)','var(--gold)','var(--rose)'][Math.floor(Math.random()*4)];document.body.appendChild(e);setTimeout(()=>e.remove(),17000);}
+function spawn(){const e=document.createElement('div');e.className='floating';e.innerText=items[Math.floor(Math.random()*items.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(25+Math.random()*45)+'px';e.style.animationDuration=(7+Math.random()*10)+'s';e.style.color=['var(--white)','var(--neon-lavender)','var(--gold)','var(--rose)'][Math.floor(Math.random()*4)];document.body.appendChild(e);setTimeout(()=>e.remove(),17000);}
 setInterval(spawn,140);
 
 function createParticle(){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'vw';p.style.animationDelay=Math.random()*10+'s';p.style.background=['var(--neon-pink)','var(--neon-lavender)','var(--gold)','var(--silver)'][Math.floor(Math.random()*4)];document.body.appendChild(p);setTimeout(()=>p.remove(),10000);}
@@ -222,6 +222,7 @@ setInterval(moveNo,700); // moves every 0.7s
 </script>
 </body>
 </html>
+
 
 
 
