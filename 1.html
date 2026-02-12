@@ -70,9 +70,9 @@ body::before {
 .card p { font-size: 30px; line-height: 1.7; color: var(--text); text-shadow: 0 0 12px var(--rose), 0 0 30px var(--lavender), 0 0 50px var(--gold); font-family: 'Poppins', sans-serif; }
 .card b { font-weight: 700; color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--gold); }
 
-.buttons { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+.buttons { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
 
-button { padding: 18px 50px; border-radius: 45px; border: none; font-size: 24px; cursor: pointer; font-family: 'Pacifico', cursive; color: white; background: var(--holo); box-shadow: 0 12px 30px rgba(255, 182, 193, 0.6), 0 0 25px var(--neon-pink), 0 0 40px var(--gold); transform-style: preserve-3d; transition: 0.3s; position: relative; overflow: hidden; }
+button { padding: 18px 50px; border-radius: 45px; border: none; font-size: 24px; cursor: pointer; font-family: 'Pacifico', cursive; color: white; background: var(--holo); box-shadow: 0 12px 30px rgba(255, 182, 193, 0.6), 0 0 25px var(--neon-pink), 0 0 40px var(--gold); transform-style: preserve-3d; transition: 0.3s; position: relative; overflow: hidden; min-height: 60px; /* Ensure touch-friendly height */ }
 
 /* dancing Yes button */
 #yes {
@@ -96,14 +96,35 @@ button:hover::before { transform: translateX(100%); }
 
 #second, #third { display: none; }
 
-@media (max-width:768px){.card p{font-size:24px}.anime{font-size:50px}button{padding:16px 40px;font-size:22px}}
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+    .card p { font-size: 20px; line-height: 1.5; } /* Smaller font for better readability */
+    .card { padding: 20px; border-radius: 25px; } /* Reduce padding and border radius for smaller screens */
+    .card::before { border-radius: 28px; }
+    .card::after { border-radius: 31px; }
+    .anime { font-size: 40px; margin-top: 20px; } /* Smaller emoji size */
+    button { padding: 16px 30px; font-size: 20px; min-height: 50px; } /* Adjust button size for touch */
+    .buttons { gap: 20px; margin-top: 30px; } /* Reduce gap and margin */
+    .page, .container { padding: 10px; } /* Reduce padding */
+    /* Reduce particle and floating element sizes for performance */
+    .particle { width: 4px; height: 4px; }
+    .floating { font-size: 20px; } /* Smaller floating elements */
+}
+
+@media (max-width: 480px) {
+    .card p { font-size: 18px; }
+    .card { padding: 15px; max-width: 100%; } /* Full width on very small screens */
+    .anime { font-size: 35px; }
+    button { padding: 14px 25px; font-size: 18px; min-height: 48px; }
+    .buttons { gap: 15px; margin-top: 25px; flex-direction: column; align-items: center; } /* Stack buttons vertically on very small screens */
+    .floating { font-size: 18px; }
+}
 </style>
 </head>
 <body>
 
 
-<audio id="song" src="file:///C:/Users/vp223983/Downloads/Tumhi%20Dekho%20Naa%20Kabhi%20Alvida%20Naa%20Kehna%20320%20Kbps.mp3"></audio>
-<audio id="song" src="file:///C:/Users/a227020/Downloads/Tumhi%20Dekho%20Naa%20Kabhi%20Alvida%20Naa%20Kehna%20320%20Kbps.mp3"></audio>
+<audio id="song" src="Tumhi Dekho Naa Kabhi Alvida Naa Kehna 320 Kbps.mp3" > </audio>
 
 <div class="container" id="first">
     <div class="card">
@@ -111,12 +132,13 @@ button:hover::before { transform: translateX(100%); }
             Log Bachte hai samunder se lekin 💕<br>
             Hum Tumhari Ankho Main Dubne ko Tayyar Hai 🌸<br><br>
             Kisko Dekhne Ki Chahat Karein? 🌸<br>
-	    Tum ko Dekh liye hai Ek bar <br>
+	   Hamne Dekh Liye Hai Apko Ek Bar <br><br>
 	    Tumhari Zulfon Ki Gehraai Hi Bohot Hai <br>
 	    Hamko Nahi Pasand Ata Kinara <br>
             Log Kehte Hai Chaand Ka Tukda Ho Tum <br>
-	    Hym Kehte Hai Chaand Tukda Hain Tumhara 💕<br>
-            <b>Kya Tere Hard Disk Me Muje Permanent Entry Mil Sakti Hai My Babali ? 🥹❤️</b>
+	    Hum Kehte Hai Chaand Tukda Hain Tumhara 💕<br>
+			
+            <b>Will You Be My valentine My Babali ? Awara Jina Nahi Chahat Me So Chota Sa Kamra Mill Sakta Hai Apke Heart me🥹❤️</b>
         </p>
     </div>
 
@@ -163,7 +185,7 @@ button:hover::before { transform: translateX(100%); }
             Muje Kisi ki Jarurat Nahi Tere Siva ✨<br><br>
             Jo Iss Dill Aur Jindagi Pe Raaj Kare 💫<br>
             Kisi Aur Ko Itni Ijaajat Nahi Tere Siva 💫<br>
-            <b> <b> I love you beyond time </b> 😘❤️</b>
+            <b> <b> Infinity love From Viru ❤️  </b> 😘❤️</b>
         </p>
     </div>
     <button onclick="back2()">Back 💞</button>
@@ -200,3 +222,6 @@ setInterval(moveNo,700); // moves every 0.7s
 </script>
 </body>
 </html>
+
+
+
