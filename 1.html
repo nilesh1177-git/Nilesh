@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forever With You 💖</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
     --blush: #f7c1d9;
@@ -12,171 +14,199 @@
     --lavender: #e6d9ff;
     --champagne: #fff4e6;
     --text: #7a3b5e;
-    --glass: rgba(255, 255, 255, 0.25);
-    --neon-pink: #ff1493;
-    --neon-lavender: #ba55d3;
-    --gold: #ffd700;
-    --silver: #c0c0c0;
-    --holo: linear-gradient(45deg, var(--neon-pink), var(--neon-lavender), var(--gold), var(--blush));
-    --iridescent: linear-gradient(135deg, var(--blush), var(--rose), var(--lavender), var(--champagne));
 }
 
+/* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Pacifico', cursive;
-    background: var(--iridescent);
-    overflow: hidden;
-    perspective: 1200px;
+    background: linear-gradient(135deg, var(--blush), var(--rose), var(--lavender), var(--champagne));
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at 25% 30%, var(--blush) 50%, transparent 70%),
-        radial-gradient(circle at 75% 70%, var(--rose) 50%, transparent 70%),
-        radial-gradient(circle at 50% 50%, var(--lavender) 30%, transparent 80%);
-    opacity: 0.8;
-    animation: aura 15s infinite alternate;
+/* Pages */
+.page, .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
 }
 
-@keyframes aura {
-    from { opacity: 0.7; filter: hue-rotate(0deg); }
-    to { opacity: 0.9; filter: hue-rotate(30deg); }
+/* Card */
+.card {
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 900px;
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
 }
 
-/* particles */
-.particle { position: absolute; width: 6px; height: 6px; background: var(--neon-pink); border-radius: 50%; animation: particleFloat 10s infinite linear; box-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--gold); }
-.particle:nth-child(odd) { background: var(--neon-lavender); box-shadow: 0 0 15px var(--neon-lavender), 0 0 30px var(--silver); }
-@keyframes particleFloat { 0% { transform: translateY(100vh) translateX(0) scale(1); opacity: 1; } 50% { opacity: 0.7; transform: translateY(50vh) translateX(20px) scale(1.2); } 100% { transform: translateY(-100vh) translateX(40px) scale(0.8); opacity: 0; } }
+.card p {
+    font-size: 26px;
+    line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    padding-top: 90px;
+}
 
-.floating { position: absolute; transform-style: preserve-3d; animation: float3d linear infinite; pointer-events: none; opacity: 0.9; filter: drop-shadow(0 0 25px var(--neon-pink)) brightness(1.1); }
-@keyframes float3d { 0% { transform: translateY(110vh) translateZ(-250px) rotateX(0) rotateY(0) rotateZ(0); } 100% { transform: translateY(-130vh) translateZ(250px) rotateX(360deg) rotateY(360deg) rotateZ(180deg); } }
+.card b { color: #ff1493; }
 
-.page, .container { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; transform-style: preserve-3d; }
+/* Buttons Layout */
+.buttons {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-.card { background: var(--glass); backdrop-filter: blur(30px); border-radius: 35px; padding: 40px; max-width: 950px; box-shadow: 0 35px 70px rgba(255, 182, 193, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.2), 0 0 40px var(--neon-pink), 0 0 60px var(--gold); transform: translateZ(120px); animation: cardFloat 5s ease-in-out infinite; border: 3px solid transparent; background-clip: padding-box; position: relative; }
-.card::before { content: ''; position: absolute; inset: -3px; background: var(--holo); border-radius: 38px; z-index: -1; animation: holoGlow 4s infinite alternate; filter: blur(1px); }
-.card::after { content: ''; position: absolute; inset: -6px; background: linear-gradient(45deg, var(--gold), var(--silver), var(--neon-pink)); border-radius: 41px; z-index: -2; opacity: 0.5; animation: outerGlow 6s infinite alternate; }
+/* Premium Highlight Button */
+button {
+    padding: 18px 45px;
+    border-radius: 50px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    background: linear-gradient(45deg, #ff1493, #ba55d3, #ffd700);
+    background-size: 200% 200%;
+    animation: gradientMove 4s ease infinite;
+    box-shadow: 0 0 20px #ff1493,
+                0 0 40px #ba55d3,
+                0 0 60px #ffd700;
+    transition: all 0.3s ease;
+}
 
-@keyframes holoGlow { from { opacity: 0.6; filter: blur(5px) hue-rotate(0deg); } to { opacity: 1; filter: blur(0px) hue-rotate(45deg); } }
-@keyframes outerGlow { from { opacity: 0.3; transform: scale(1); } to { opacity: 0.7; transform: scale(1.02); } }
-@keyframes cardFloat { 0%, 100% { transform: translateZ(120px) translateY(0) rotateX(0) rotateY(0); } 50% { transform: translateZ(160px) translateY(-15px) rotateX(3deg) rotateY(2deg); } }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-.card p { font-size: 30px; line-height: 1.7; color: var(--text); text-shadow: 0 0 12px var(--rose), 0 0 30px var(--lavender), 0 0 50px var(--gold); font-family: 'Poppins', sans-serif; }
-.card b { font-weight: 700; color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--gold); }
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #ff1493,
+                0 0 60px #ffd700,
+                0 0 80px #ffffff;
+}
 
-.buttons { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+button:active { transform: scale(0.95); }
 
-button { padding: 18px 50px; border-radius: 45px; border: none; font-size: 24px; cursor: pointer; font-family: 'Pacifico', cursive; color: white; background: var(--holo); box-shadow: 0 12px 30px rgba(255, 182, 193, 0.6), 0 0 25px var(--neon-pink), 0 0 40px var(--gold); transform-style: preserve-3d; transition: 0.3s; position: relative; overflow: hidden; min-height: 60px; /* Ensure touch-friendly height */ }
-
-/* dancing Yes button */
 #yes {
-    animation: dance 1s infinite alternate;
-}
-@keyframes dance {
-    0% { transform: translateY(0) rotate(-5deg) scale(1); }
-    25% { transform: translateY(-5px) rotate(5deg) scale(1.05); }
-    50% { transform: translateY(-10px) rotate(-5deg) scale(1.1); }
-    75% { transform: translateY(-5px) rotate(5deg) scale(1.05); }
-    100% { transform: translateY(0) rotate(-5deg) scale(1); }
+    font-weight: bold;
+    box-shadow: 0 0 40px #ff1493,
+                0 0 80px #ffd700,
+                0 0 100px #ffffff;
 }
 
-/* NO button dodge animation handled by JS continuously */
+.anime {
+    font-size: 45px;
+    margin-top: 25px;
+}
 
-button::before { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent); transform: translateX(-100%); transition: transform 0.7s; }
-button:hover::before { transform: translateX(100%); }
+/* Floating hearts */
+.floating {
+    position: fixed;
+    animation: floatUp linear forwards;
+    pointer-events: none;
+}
 
-.anime { font-size: 60px; margin-top: 30px; animation: animeHop 2.5s infinite; text-shadow: 0 0 25px var(--neon-pink), 0 0 40px var(--gold); }
-@keyframes animeHop { 0%,100%{transform:translateY(0) translateZ(60px) rotateY(0) scale(1);}50%{transform:translateY(-20px) translateZ(90px) rotateY(15deg) scale(1.1);} }
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
 
+/* Hide pages */
 #second, #third { display: none; }
 
-/* Mobile responsiveness improvements */
+/* Mobile */
 @media (max-width: 768px) {
-    .card p { font-size: 20px; line-height: 1.5; } /* Smaller font for better readability */
-    .card { padding: 20px; border-radius: 25px; } /* Reduce padding and border radius for smaller screens */
-    .card::before { border-radius: 28px; }
-    .card::after { border-radius: 31px; }
-    .anime { font-size: 40px; margin-top: 20px; } /* Smaller emoji size */
-    button { padding: 16px 30px; font-size: 20px; min-height: 50px; } /* Adjust button size for touch */
-    .buttons { gap: 20px; margin-top: 30px; } /* Reduce gap and margin */
-    .page, .container { padding: 10px; } /* Reduce padding */
-    /* Reduce particle and floating element sizes for performance */
-    .particle { width: 4px; height: 4px; }
-    .floating { font-size: 20px; } /* Smaller floating elements */
-}
+    .card { padding: 20px; }
 
-@media (max-width: 480px) {
-    .card p { font-size: 18px; }
-    .card { padding: 15px; max-width: 100%; } /* Full width on very small screens */
+    .card p {
+        font-size: 18px;
+        padding-top: 110px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 14px 28px;
+    }
+
     .anime { font-size: 35px; }
-    button { padding: 14px 25px; font-size: 18px; min-height: 48px; }
-    .buttons { gap: 15px; margin-top: 25px; flex-direction: column; align-items: center; } /* Stack buttons vertically on very small screens */
-    .floating { font-size: 18px; }
+
+    .buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 </style>
 </head>
+
 <body>
 
+<audio id="song" src="Tumhi Dekho Naa Kabhi Alvida Naa Kehna 320 Kbps.mp3"></audio>
 
-<audio id="song" src="Tumhi Dekho Naa Kabhi Alvida Naa Kehna 320 Kbps.mp3" > </audio>
-
+<!-- FIRST PAGE -->
 <div class="container" id="first">
     <div class="card">
         <p>
-			<span class="first-line">
-            Log Bachte hai samunder se lekin 💕</span><br>
+            Log Bachte hai samunder se lekin 💕<br>
             Hum Tumhari Ankho Main Dubne ko Tayyar Hai 🌸<br><br>
+
             Kisko Dekhne Ki Chahat Karein? 🌸<br>
-	   Hamne Dekh Liye Hai Apko Ek Bar <br><br>
-	    Tumhari Zulfon Ki Gehraai Hi Bohot Hai <br>
-	    Hamko Nahi Pasand Ata Kinara <br>
+            Hamne Dekh Liye Hai Apko Ek Bar <br><br>
+
+            Tumhari Zulfon Ki Gehraai Hi Bohot Hai <br>
+            Hamko Nahi Pasand Ata Kinara <br>
+
             Log Kehte Hai Chaand Ka Tukda Ho Tum <br>
-	    Hum Kehte Hai Chaand Tukda Hain Tumhara 💕<br>
-			
-            <b style="color:#ffffff;">Will You Be My valentine My Ashu ?
-				Awara Jina Nahi Chahat Me So Chota Sa Kamra Mill Sakta Hai Apke Heart me🥹❤️</b>
+            Hum Kehte Hai Chaand Tukda Hain Tumhara 💕<br><br>
+
+            <b>
+            Will You Be My Valentine My Ashu ?
+            Awara Jina Nahi Chahat Me So Chota Sa Kamra Mill Sakta Hai Apke Heart me 🥹❤️
+            </b>
         </p>
     </div>
 
     <div class="buttons">
         <button id="yes" onclick="yes()">Yes 💍</button>
-        <button id="no">No</button>
+        <button id="no">No 💔</button>
     </div>
 
     <div class="anime">🐰💖🧸</div>
 </div>
 
+<!-- SECOND PAGE -->
 <div class="page" id="second">
     <div class="card">
         <p>
-			
            Congrats My World 😘💖<br><br>
-			
-            Mere Pass Wo Alfaaz Nahi 🥹<br><br>
-            Jo Iss Baat ko Bayana Karein🌸<br>
-            Tum Mere Liye Kya Ho <br>
-            Bas Tum Wo shakhs Ho Jiss Se Mujshe ❤️<br>
-            Be-Panaha Mohabat Hai  💍✨ <br><br>
-
-            Mujhe Sirf Tum Chahiye —<br>
-            Aaj Bhi, Kal Bhi, Hamesha Bhi  ❤️<br>
-
+           Mere Pass Wo Alfaaz Nahi 🥹<br><br>
+           Jo Iss Baat ko Bayana Karein🌸<br>
+           Tum Mere Liye Kya Ho <br>
+           Bas Tum Wo shakhs Ho Jiss Se Mujshe ❤️<br>
+           Be-Panaha Mohabat Hai  💍✨ <br><br>
+           Mujhe Sirf Tum Chahiye —<br>
+           Aaj Bhi, Kal Bhi, Hamesha Bhi  ❤️<br><br>
            Bas EK Shikayat Hamesh Rahegi Tujse ❤️<br><br>
-
-	   Ki Samnadar Bhar Ka Pani Kam Lagta Hai Muje 🥹<br><br>
+           Ki Samnadar Bhar Ka Pani Kam Lagta Hai Muje 🥹<br><br>
            Tu Jitna Bhi Mill Jaye Kam Lagta HaI muje ❤️<br>
-	   Tujse Do Pal Ki Judaai IsI Chubati Hai 🥹<br>
+           Tujse Do Pal Ki Judaai IsI Chubati Hai 🥹<br>
            Ki Jamae Bhar ka Gaam Lagta Hai Muje 🥹<br><br>
         </p>
     </div>
 
-	
     <div class="buttons">
         <button onclick="next()">Next 💕</button>
         <button onclick="back()">Back</button>
@@ -184,14 +214,15 @@ button:hover::before { transform: translateX(100%); }
     <div class="anime">👩‍❤️‍👨💖</div>
 </div>
 
+<!-- THIRD PAGE -->
 <div class="page" id="third">
     <div class="card">
         <p>
             Muje Kisi Se Mohabt Nahi Tere Siva 🌷<br>
             Muje Kisi ki Jarurat Nahi Tere Siva ✨<br><br>
             Jo Iss Dill Aur Jindagi Pe Raaj Kare 💫<br>
-            Kisi Aur Ko Itni Ijaajat Nahi Tere Siva 💫<br>
-            <b> <b style="color:#ffffff;"> Infinity love From Nilesh ❤️  </b> 😘❤️</b>
+            Kisi Aur Ko Itni Ijaajat Nahi Tere Siva 💫<br><br>
+            <b>Infinity Love From Nilesh ❤️ 😘</b>
         </p>
     </div>
     <button onclick="back2()">Back 💞</button>
@@ -199,45 +230,52 @@ button:hover::before { transform: translateX(100%); }
 </div>
 
 <script>
-/* Navigation */
-function yes(){document.getElementById('song').play(); first.style.display='none'; second.style.display='flex';}
-function back(){second.style.display='none';first.style.display='flex';}
-function next(){second.style.display='none';third.style.display='flex';}
-function back2(){third.style.display='none';second.style.display='flex';}
+function yes(){
+    document.getElementById('song').play();
+    first.style.display='none';
+    second.style.display='flex';
+}
 
-/* Floating hearts & particles */
-const items=['❤️','💖','💘','🌸','🌹','🌷','🌻','💋','🐰','🧸','✨','⭐','💫','🥰','😍','👩‍❤️‍👨','🌟','💎','🔮','🌙','🦋'];
-function spawn(){const e=document.createElement('div');e.className='floating';e.innerText=items[Math.floor(Math.random()*items.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(25+Math.random()*45)+'px';e.style.animationDuration=(7+Math.random()*10)+'s';e.style.color=['var(--white)','var(--neon-lavender)','var(--gold)','var(--rose)'][Math.floor(Math.random()*4)];document.body.appendChild(e);setTimeout(()=>e.remove(),17000);}
-setInterval(spawn,140);
+function back(){
+    second.style.display='none';
+    first.style.display='flex';
+}
 
-function createParticle(){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'vw';p.style.animationDelay=Math.random()*10+'s';p.style.background=['var(--neon-pink)','var(--neon-lavender)','var(--gold)','var(--silver)'][Math.floor(Math.random()*4)];document.body.appendChild(p);setTimeout(()=>p.remove(),10000);}
-setInterval(createParticle,180);
+function next(){
+    second.style.display='none';
+    third.style.display='flex';
+}
 
-/* NO button automatic dance/move */
+function back2(){
+    third.style.display='none';
+    second.style.display='flex';
+}
+
+/* Floating hearts */
+const items=['❤️','💖','💘','🌸','🌹','🌷','💋','✨','💫','🥰'];
+function spawn(){
+    const e=document.createElement('div');
+    e.className='floating';
+    e.innerText=items[Math.floor(Math.random()*items.length)];
+    e.style.left=Math.random()*100+'vw';
+    e.style.fontSize=(20+Math.random()*30)+'px';
+    e.style.animationDuration=(5+Math.random()*5)+'s';
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),8000);
+}
+setInterval(spawn,500);
+
+/* Moving NO button */
 const noBtn=document.getElementById('no');
 function moveNo(){
-    const vw=window.innerWidth-noBtn.offsetWidth;
-    const vh=window.innerHeight-noBtn.offsetHeight;
-    const x=Math.random()*vw;
-    const y=Math.random()*vh;
+    const x=Math.random()*(window.innerWidth-100);
+    const y=Math.random()*(window.innerHeight-50);
     noBtn.style.position='fixed';
     noBtn.style.left=x+'px';
     noBtn.style.top=y+'px';
 }
-setInterval(moveNo,700); // moves every 0.7s
+setInterval(moveNo,900);
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
