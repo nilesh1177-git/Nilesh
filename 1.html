@@ -31,7 +31,7 @@ body {
 /* PAGE WRAPPER */
 .page, .container {
     width: 100%;
-    padding: 60px 20px;   /* Safe top space */
+    padding: 60px 20px;
     display: none;
     text-align: center;
 }
@@ -137,8 +137,9 @@ button:active {
 <div class="container" id="first">
     <div class="card">
         <p>
-        
-        
+
+            <br><br><br>
+
             Log Bachte hai samunder se lekin 💕<br>
             Hum Tumhari Ankho Main Dubne ko Tayyar Hai 🌸<br><br>
 
@@ -171,8 +172,8 @@ button:active {
     <div class="card">
         <p>
 
-           
-            
+            <br><br>
+
            Congrats My World 😘💖<br><br>
            Mere Pass Wo Alfaaz Nahi 🥹<br><br>
            Jo Iss Baat ko Bayana Karein🌸<br>
@@ -193,6 +194,7 @@ button:active {
 <div class="page" id="third">
     <div class="card">
         <p>
+            <br><br>
             Muje Kisi Se Mohabt Nahi Tere Siva 🌷<br>
             Muje Kisi ki Jarurat Nahi Tere Siva ✨<br><br>
             <b>Infinity Love From Nilesh ❤️ 😘</b>
@@ -239,16 +241,22 @@ function spawn(){
 }
 setInterval(spawn,600);
 
-/* Moving NO Button */
-const noBtn=document.getElementById('no');
-noBtn.addEventListener("mouseover",()=>{
-    noBtn.style.position="absolute";
-    noBtn.style.left=Math.random()*80+"%";
-    noBtn.style.top=Math.random()*80+"%";
+/* NO button move on mouse + touch */
+const noBtn = document.getElementById('no');
+
+function moveNoButton() {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 80 + "%";
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveNoButton();
 });
 </script>
 
 </body>
 </html>
-
-
