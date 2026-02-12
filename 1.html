@@ -16,7 +16,6 @@
     --text: #7a3b5e;
 }
 
-/* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -25,21 +24,20 @@ body {
     background: linear-gradient(135deg, var(--blush), var(--rose), var(--lavender), var(--champagne));
     overflow-x: hidden;
     overflow-y: auto;
-    position: relative;
 }
 
-/* Pages */
+/* PAGE LAYOUT */
 .page, .container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Prevent top cutting */
+    padding: 80px 20px 40px 20px;
     text-align: center;
-    padding: 20px;
 }
 
-/* Card */
+/* CARD */
 .card {
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(20px);
@@ -54,12 +52,11 @@ body {
     line-height: 1.7;
     font-family: 'Poppins', sans-serif;
     color: var(--text);
-    padding-top: 90px;
 }
 
 .card b { color: #ff1493; }
 
-/* Buttons Layout */
+/* BUTTONS */
 .buttons {
     display: flex;
     gap: 30px;
@@ -68,7 +65,6 @@ body {
     justify-content: center;
 }
 
-/* Premium Highlight Button */
 button {
     padding: 18px 45px;
     border-radius: 50px;
@@ -92,13 +88,7 @@ button {
     100% { background-position: 0% 50%; }
 }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px #ff1493,
-                0 0 60px #ffd700,
-                0 0 80px #ffffff;
-}
-
+button:hover { transform: scale(1.1); }
 button:active { transform: scale(0.95); }
 
 #yes {
@@ -113,7 +103,7 @@ button:active { transform: scale(0.95); }
     margin-top: 25px;
 }
 
-/* Floating hearts */
+/* FLOATING HEARTS */
 .floating {
     position: fixed;
     animation: floatUp linear forwards;
@@ -125,16 +115,20 @@ button:active { transform: scale(0.95); }
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Hide pages */
+/* HIDE OTHER PAGES */
 #second, #third { display: none; }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 768px) {
     .card { padding: 20px; }
 
     .card p {
         font-size: 18px;
-        padding-top: 110px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 20px;
     }
 
     button {
@@ -142,11 +136,12 @@ button:active { transform: scale(0.95); }
         padding: 14px 28px;
     }
 
-    .anime { font-size: 35px; }
+    .anime {
+        font-size: 35px;
+    }
 
-    .buttons {
-        flex-direction: column;
-        gap: 20px;
+    .page, .container {
+        padding: 100px 15px 40px 15px;
     }
 }
 </style>
@@ -251,7 +246,7 @@ function back2(){
     second.style.display='flex';
 }
 
-/* Floating hearts */
+/* Floating Hearts */
 const items=['❤️','💖','💘','🌸','🌹','🌷','💋','✨','💫','🥰'];
 function spawn(){
     const e=document.createElement('div');
@@ -265,11 +260,11 @@ function spawn(){
 }
 setInterval(spawn,500);
 
-/* Moving NO button */
+/* Moving NO Button */
 const noBtn=document.getElementById('no');
 function moveNo(){
-    const x=Math.random()*(window.innerWidth-100);
-    const y=Math.random()*(window.innerHeight-50);
+    const x=Math.random()*(window.innerWidth-120);
+    const y=Math.random()*(window.innerHeight-60);
     noBtn.style.position='fixed';
     noBtn.style.left=x+'px';
     noBtn.style.top=y+'px';
