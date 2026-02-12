@@ -16,90 +16,90 @@
     --text: #7a3b5e;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    min-height: 100vh;
     font-family: 'Pacifico', cursive;
     background: linear-gradient(135deg, var(--blush), var(--rose), var(--lavender), var(--champagne));
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
-/* PAGE LAYOUT */
+/* PAGE WRAPPER */
 .page, .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Prevent top cutting */
-    padding: 80px 20px 40px 20px;
+    width: 100%;
+    padding: 60px 20px;   /* Safe top space */
+    display: none;
     text-align: center;
+}
+
+#first {
+    display: block;
 }
 
 /* CARD */
 .card {
     background: rgba(255,255,255,0.35);
     backdrop-filter: blur(20px);
-    border-radius: 30px;
-    padding: 40px;
-    max-width: 900px;
-    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+    border-radius: 25px;
+    padding: 30px;
+    max-width: 850px;
+    margin: auto;
+    box-shadow: 0 15px 40px rgba(255,105,180,0.3);
 }
 
 .card p {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.7;
     font-family: 'Poppins', sans-serif;
     color: var(--text);
 }
 
-.card b { color: #ff1493; }
+.card b {
+    color: #ff1493;
+}
 
 /* BUTTONS */
 .buttons {
-    display: flex;
-    gap: 30px;
     margin-top: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 button {
-    padding: 18px 45px;
+    padding: 15px 35px;
+    margin: 10px;
     border-radius: 50px;
     border: none;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     font-family: 'Pacifico', cursive;
     color: white;
     background: linear-gradient(45deg, #ff1493, #ba55d3, #ffd700);
     background-size: 200% 200%;
-    animation: gradientMove 4s ease infinite;
+    animation: glow 4s ease infinite;
     box-shadow: 0 0 20px #ff1493,
-                0 0 40px #ba55d3,
-                0 0 60px #ffd700;
-    transition: all 0.3s ease;
+                0 0 40px #ba55d3;
+    transition: 0.3s;
 }
 
-@keyframes gradientMove {
+@keyframes glow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-button:hover { transform: scale(1.1); }
-button:active { transform: scale(0.95); }
+button:hover {
+    transform: scale(1.1);
+}
 
-#yes {
-    font-weight: bold;
-    box-shadow: 0 0 40px #ff1493,
-                0 0 80px #ffd700,
-                0 0 100px #ffffff;
+button:active {
+    transform: scale(0.95);
 }
 
 .anime {
-    font-size: 45px;
+    font-size: 40px;
     margin-top: 25px;
 }
 
@@ -115,33 +115,15 @@ button:active { transform: scale(0.95); }
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* HIDE OTHER PAGES */
-#second, #third { display: none; }
-
 /* MOBILE */
 @media (max-width: 768px) {
-    .card { padding: 20px; }
-
     .card p {
-        font-size: 18px;
-    }
-
-    .buttons {
-        flex-direction: column;
-        gap: 20px;
+        font-size: 17px;
     }
 
     button {
-        font-size: 18px;
-        padding: 14px 28px;
-    }
-
-    .anime {
-        font-size: 35px;
-    }
-
-    .page, .container {
-        padding: 100px 15px 40px 15px;
+        font-size: 17px;
+        padding: 12px 25px;
     }
 }
 </style>
@@ -175,7 +157,7 @@ button:active { transform: scale(0.95); }
     </div>
 
     <div class="buttons">
-        <button id="yes" onclick="yes()">Yes 💍</button>
+        <button onclick="yes()">Yes 💍</button>
         <button id="no">No 💔</button>
     </div>
 
@@ -191,14 +173,8 @@ button:active { transform: scale(0.95); }
            Jo Iss Baat ko Bayana Karein🌸<br>
            Tum Mere Liye Kya Ho <br>
            Bas Tum Wo shakhs Ho Jiss Se Mujshe ❤️<br>
-           Be-Panaha Mohabat Hai  💍✨ <br><br>
-           Mujhe Sirf Tum Chahiye —<br>
-           Aaj Bhi, Kal Bhi, Hamesha Bhi  ❤️<br><br>
-           Bas EK Shikayat Hamesh Rahegi Tujse ❤️<br><br>
-           Ki Samnadar Bhar Ka Pani Kam Lagta Hai Muje 🥹<br><br>
-           Tu Jitna Bhi Mill Jaye Kam Lagta HaI muje ❤️<br>
-           Tujse Do Pal Ki Judaai IsI Chubati Hai 🥹<br>
-           Ki Jamae Bhar ka Gaam Lagta Hai Muje 🥹<br><br>
+           Be-Panaha Mohabat Hai 💍✨ <br><br>
+           Mujhe Sirf Tum Chahiye — Aaj Bhi, Kal Bhi, Hamesha Bhi ❤️<br><br>
         </p>
     </div>
 
@@ -206,7 +182,6 @@ button:active { transform: scale(0.95); }
         <button onclick="next()">Next 💕</button>
         <button onclick="back()">Back</button>
     </div>
-    <div class="anime">👩‍❤️‍👨💖</div>
 </div>
 
 <!-- THIRD PAGE -->
@@ -215,61 +190,57 @@ button:active { transform: scale(0.95); }
         <p>
             Muje Kisi Se Mohabt Nahi Tere Siva 🌷<br>
             Muje Kisi ki Jarurat Nahi Tere Siva ✨<br><br>
-            Jo Iss Dill Aur Jindagi Pe Raaj Kare 💫<br>
-            Kisi Aur Ko Itni Ijaajat Nahi Tere Siva 💫<br><br>
             <b>Infinity Love From Nilesh ❤️ 😘</b>
         </p>
     </div>
-    <button onclick="back2()">Back 💞</button>
-    <div class="anime">🐰💋🧸</div>
+    <div class="buttons">
+        <button onclick="back2()">Back 💞</button>
+    </div>
 </div>
 
 <script>
 function yes(){
     document.getElementById('song').play();
     first.style.display='none';
-    second.style.display='flex';
+    second.style.display='block';
 }
 
 function back(){
     second.style.display='none';
-    first.style.display='flex';
+    first.style.display='block';
 }
 
 function next(){
     second.style.display='none';
-    third.style.display='flex';
+    third.style.display='block';
 }
 
 function back2(){
     third.style.display='none';
-    second.style.display='flex';
+    second.style.display='block';
 }
 
 /* Floating Hearts */
-const items=['❤️','💖','💘','🌸','🌹','🌷','💋','✨','💫','🥰'];
+const items=['❤️','💖','💘','🌸','🌹','✨'];
 function spawn(){
     const e=document.createElement('div');
     e.className='floating';
     e.innerText=items[Math.floor(Math.random()*items.length)];
     e.style.left=Math.random()*100+'vw';
-    e.style.fontSize=(20+Math.random()*30)+'px';
-    e.style.animationDuration=(5+Math.random()*5)+'s';
+    e.style.fontSize=(20+Math.random()*25)+'px';
+    e.style.animationDuration=(4+Math.random()*4)+'s';
     document.body.appendChild(e);
-    setTimeout(()=>e.remove(),8000);
+    setTimeout(()=>e.remove(),6000);
 }
-setInterval(spawn,500);
+setInterval(spawn,600);
 
 /* Moving NO Button */
 const noBtn=document.getElementById('no');
-function moveNo(){
-    const x=Math.random()*(window.innerWidth-120);
-    const y=Math.random()*(window.innerHeight-60);
-    noBtn.style.position='fixed';
-    noBtn.style.left=x+'px';
-    noBtn.style.top=y+'px';
-}
-setInterval(moveNo,900);
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.position="absolute";
+    noBtn.style.left=Math.random()*80+"%";
+    noBtn.style.top=Math.random()*80+"%";
+});
 </script>
 
 </body>
